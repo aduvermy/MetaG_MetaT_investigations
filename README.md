@@ -1,4 +1,4 @@
-# Haruko_takeyama_lab
+# MetaG_MetaT_investigations
 Metagenomic &amp; metatransciptomic coral reaf investigations
 
 
