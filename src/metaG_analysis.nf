@@ -219,7 +219,7 @@ fastq_fromPATH
  ///////////////////////////////////////////////////////////////////////////////
 
  if (!params.adapter_removal) {
-       fastq_trim_2cutAdapt.set{ fastq_2assembly}
+       fastq_trim_2cutAdapt.into{ fastq_2assembly ; fastq_2mapping}
        Channel
               .empty()
               .set { fastq_cutAdapt_2QC }
@@ -237,7 +237,7 @@ fastq_fromPATH
        set file_id, file(reads) from fastq_trim_2cutAdapt
 
        output:
-       set file_id, "${file_id}*_cut.fastq.gz" into fastq_2assembly, fastq_cutAdapt_2QC
+       set file_id, "${file_id}*_cut.fastq.gz" into fastq_2assembly, fastq_cutAdapt_2QC, fastq_2mapping
        set file_id, "${file_id}_report.txt" into adapter_removal_report
 
        script:
@@ -363,7 +363,7 @@ fastq_fromPATH
 
       output:
       file "*" into spades_files
-      set file_id, "scaffolds.fasta" into scaffolds
+      set file_id, "scaffolds.fasta" into scaffolds_fromSpades2indexing , scaffolds_fromSpades2checkM, scaffolds_fromSpades2Quast, scaffolds_fromSpades2groupM
 
       script:
       def single = reads instanceof Path
@@ -377,7 +377,7 @@ fastq_fromPATH
        }
      else{
          """
-         spades.py -t ${task.cpus} -m 100 \
+         spades.py --meta -t ${task.cpus} -m 100 \
          --pe1-1 ${reads[0]} \
          --pe1-2 ${reads[1]} \
          -o ./
@@ -385,23 +385,170 @@ fastq_fromPATH
        }
 }
 
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+/* --                                                                     -- */
+/* --                      BUILD GENOME INDEX                             -- */
+/* --                                                                     -- */
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+process Fasta_indexing {
+    label "bowtie2"
+    tag "$file_id"
+
+    input:
+    set file_id, file(fasta) from scaffolds_fromSpades2indexing
+
+    output:
+    file "*.index*" into index_files
+    file "*_report.txt" into indexing_report
+
+    script:
+    """
+    bowtie2-build --threads ${task.cpus} ${fasta} ${fasta.baseName}.index &> ${fasta.baseName}_bowtie2_report.txt
+
+    if grep -q "Error" ${fasta.baseName}_bowtie2_report.txt; then
+      exit 1
+    fi
+    """
+
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+/* --                                                                     -- */
+/* --                          MAPPING                                    -- */
+/* --                                                                     -- */
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+process Mapping {
+
+   publishDir "${params.outdir}/${file_id}/mapping", mode: 'copy'
+   tag "$file_id"
+   label "bowtie2"
+
+
+   input:
+   set file_id, file(reads) from fastq_2mapping
+   file index from index_files.collect()
+
+
+   output:
+   set file_id, val(data_type) ,"*.bam" into bam_files
+   file "*_report.txt" into mapping_report
+
+   script:
+   def single = reads instanceof Path
+   index_id = index[0]
+   for (index_file in index) {
+     if (index_file =~ /.*\.1\.bt2/ && !(index_file =~ /.*\.rev\.1\.bt2/)) {
+         index_id = ( index_file =~ /(.*)\.1\.bt2/)[0][1]
+     }
+   }
+   if (single){
+     data_type="SE"
+     """
+     bowtie2 --very-sensitive -p ${task.cpus} -x ${index_id} \
+     -U ${reads} 2> \
+     ${file_id}_bowtie2_report_tmp.txt | \
+     samtools view -@ ${task.cpus} -Sbh - | \
+     samtools sort -@ ${task.cpus} -o ${file_id}.bam
+
+     if grep -q "Error" ${file_id}_bowtie2_report_tmp.txt; then
+     exit 1
+     fi
+     tail -n 19 ${file_id}_bowtie2_report_tmp.txt > ${file_id}_bowtie2_report.txt
+     """
+   }
+   else{
+     data_type="PE"
+     """
+     bowtie2 --very-sensitive -p ${task.cpus} -x ${index_id} \
+     -1 ${reads[0]} -2 ${reads[1]} 2> \
+     ${file_id}_bowtie2_report_tmp.txt | \
+     samtools view -Sbh -@ ${task.cpus} - | \
+     samtools sort -@ ${task.cpus} -o ${file_id}.bam
+
+     if grep -q "Error" ${file_id}_bowtie2_report_tmp.txt; then
+     exit 1
+     fi
+     tail -n 19 ${file_id}_bowtie2_report_tmp.txt > ${file_id}_bowtie2_report.txt
+     """
+
+ }
+}
+
+
+
 process Quast {
      label "quast"
      tag "$file_id"
-     publishDir "${params.outdir}/${file_id}/assembly/quast", mode: 'copy'
+     publishDir "${params.outdir}/${file_id}/Quast", mode: 'copy'
 
      input:
-     set file_id, file(scaff) from scaffolds
+     set file_id, file(scaff) from scaffolds_fromSpades2Quast
 
      output:
-     file "*" into quast_report
+     set file_id, "*" into quast_report
 
      script:
         """
         quast.py -t ${task.cpus} -o ./ \
+        --min-contig 150 \
         ${scaff}
         """
 }
+
+
+process CheckM {
+     label "checkM"
+     tag "$file_id"
+     publishDir "${params.outdir}/${file_id}/CheckM", mode: 'copy'
+
+     input:
+     set file_id, file(scaff) from scaffolds_fromSpades2checkM
+
+     output:
+     set file_id, "*" into busco_report
+
+     script:
+        """
+        mkdir bins
+        mv *.fasta ./bins
+        checkm lineage_wf ./bins ./checkM -x fasta
+        """
+}
+
+process groupM {
+     label "checkM"
+     tag "$file_id"
+     publishDir "${params.outdir}/${file_id}/groupM", mode: 'copy'
+
+     input:
+     set file_id, file(scaff) from scaffolds_fromSpades2groupM
+     set file_id, data_type, file(bam) from bam_files
+
+     output:
+     set file_id, "*" into groupM
+
+     script:
+        """
+        ./NGStools/GroopM/groopm parse db.gm ${scaff} *.bam
+
+        """
+}
+
+/*
+groopm core db.gm
+groopm refine db.gm
+groopm recruit db.gm
+groopm extract db.gm ${scaff}
+*/
+
  ///////////////////////////////////////////////////////////////////////////////
  ///////////////////////////////////////////////////////////////////////////////
  /* --                                                                     -- */
