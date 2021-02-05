@@ -13,6 +13,12 @@ curl -s https://get.nextflow.io | bash
 ./nextflow run src/metaG_analysis.nf -c src/metaG_analysis.config -profile pedago --inputFromSRA SRR5113072 -resume
 ```
 
+# CAMI
+
+|   LOW   |   MEDIUM     |   HIGH      |
+|:-------:|:------------:|:-----------:|
+| Sample 1| Sample 1 5kbp|   sample 1  |
+
 # Useful Links
 [structure Tara Ocean](http://ocean-microbiome.embl.de/companion.html)  
 [prodigal Fast, reliable protein-coding gene prediction for prokaryotic genomes.](https://github.com/hyattpd/Prodigal)  
