@@ -19,6 +19,18 @@ curl -s https://get.nextflow.io | bash
 |:-------:|:------------:|:-----------:|
 | Sample 1| Sample 1 5kbp|   sample 1  |
 
+# Public datasets
+
+### Metagenomic seawater
+
+|   SRX7913443                            |   SPRJNA329908      |       PRJEB22493              |
+|:---------------------------------------:|:-------------------:|:-----------------------------:|
+|           1                             |               329   |         495                   |
+|shotgun sequencing of sediment sample D18| seawater metagenome | reference alignment + assembly|
+
+
+
+
 # Useful Links
 [structure Tara Ocean](http://ocean-microbiome.embl.de/companion.html)  
 [prodigal Fast, reliable protein-coding gene prediction for prokaryotic genomes.](https://github.com/hyattpd/Prodigal)  
