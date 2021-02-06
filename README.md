@@ -29,6 +29,21 @@ curl -s https://get.nextflow.io | bash
 |shotgun sequencing of sediment sample D18| seawater metagenome | reference alignment + assembly|
 
 
+### Coral reaf metagenomic
+
+|   PRJNA357506                           |   PRJEB28183        |       mgp81589                |
+|:---------------------------------------:|:-------------------:|:-----------------------------:|
+|           16                            |               689   |         26                    |
+|impact of aquaculture effluent on Red Sea coral reef water nutrients and microorganisms| Coral-associated bacteria demonstrate phylosymbiosis and cophylogeny | rMicrobiome of Pseudodiploria strigosa across Bermuda's reefs|
+
+### Metatrasncriptomic
+
+|   SRX4803467                            |               SRX6899989                         |  
+|:---------------------------------------:|:------------------------------------------------:|
+|           1                             |               1                                  |
+|Antarctic marine metatranscriptome       | Metatranscriptomic data from Coast of New Jersey |
+
+
 
 
 # Useful Links
