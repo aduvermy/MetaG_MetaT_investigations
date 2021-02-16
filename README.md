@@ -1,18 +1,6 @@
 # MetaG_MetaT_investigations
 Metagenomic &amp; metatransciptomic coral reaf investigations
 
-# Install nextflow
-
-```
-cd MetaG_MetaT_investigations
-curl -s https://get.nextflow.io | bash
-```
-# Launch Pipeline
-
-```
-./nextflow run src/metaG_analysis.nf -c src/metaG_analysis.config -profile pedago --inputFromSRA SRR5113072 -resume
-```
-
 # CAMI
 
 |   LOW   |   MEDIUM     |   HIGH      |
@@ -43,22 +31,35 @@ curl -s https://get.nextflow.io | bash
 |           1                             |               1                                  |
 |Antarctic marine metatranscriptome       | Metatranscriptomic data from Coast of New Jersey |
 
+# Metagenomic
 
-# Atlas workflow
+## Atlas workflow
 
 <img src="./issues/ATLAS_scheme.png">
 
-# Sunbeam workflow
+## Sunbeam workflow
 
 <img src="./issues/SUNBEAM_scheme.png">
 
-# mOTU2 workflow
+## mOTU2 an alternative for taxonomic assignation
 
 <img src="./issues/mOTU.png">
 
-# Comparison
+## Comparison between workflow
 
 <img src="./issues/table_comparison.png">
+
+# Metagenomic
+
+## Metatrans workflow
+
+<img src="./issues/metatrans.jpeg">
+
+## Samsa2 workflow
+
+<img src="./issues/samsa2.jpg">
+
+
 
 
 
