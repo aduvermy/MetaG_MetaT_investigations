@@ -48,6 +48,22 @@ curl -s https://get.nextflow.io | bash
 
 <img src="./issues/ATLAS_scheme.png">
 
+# Sunbeam workflow
+
+<img src="./issues/SUNBEAM_scheme.png">
+
+# mOTU2 workflow
+
+<img src="./issues/mOTU.png">
+
+# Comparison
+
+<img src="./issues/table_comparison.png">
+
+
+
+
+
 # Useful Links
 [structure Tara Ocean](http://ocean-microbiome.embl.de/companion.html)  
 [prodigal Fast, reliable protein-coding gene prediction for prokaryotic genomes.](https://github.com/hyattpd/Prodigal)  
