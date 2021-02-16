@@ -44,7 +44,9 @@ curl -s https://get.nextflow.io | bash
 |Antarctic marine metatranscriptome       | Metatranscriptomic data from Coast of New Jersey |
 
 
+# Atlas workflow
 
+<img src="./issues/ATLAS_scheme.png">
 
 # Useful Links
 [structure Tara Ocean](http://ocean-microbiome.embl.de/companion.html)  
