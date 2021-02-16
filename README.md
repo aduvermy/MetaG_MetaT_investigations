@@ -36,7 +36,7 @@ curl -s https://get.nextflow.io | bash
 |           16                            |               689   |         26                    |
 |impact of aquaculture effluent on Red Sea coral reef water nutrients and microorganisms| Coral-associated bacteria demonstrate phylosymbiosis and cophylogeny | rMicrobiome of Pseudodiploria strigosa across Bermuda's reefs|
 
-### Metatrasncriptomic
+### Metatranscriptomic
 
 |   SRX4803467                            |               SRX6899989                         |  
 |:---------------------------------------:|:------------------------------------------------:|
