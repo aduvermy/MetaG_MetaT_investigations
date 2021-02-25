@@ -1,18 +1,6 @@
 # MetaG_MetaT_investigations
 Metagenomic &amp; metatransciptomic coral reaf investigations
 
-# Install nextflow
-
-```
-cd MetaG_MetaT_investigations
-curl -s https://get.nextflow.io | bash
-```
-# Launch Pipeline
-
-```
-./nextflow run src/metaG_analysis.nf -c src/metaG_analysis.config -profile pedago --inputFromSRA SRR5113072 -resume
-```
-
 # CAMI
 
 |   LOW   |   MEDIUM     |   HIGH      |
@@ -36,12 +24,43 @@ curl -s https://get.nextflow.io | bash
 |           16                            |               689   |         26                    |
 |impact of aquaculture effluent on Red Sea coral reef water nutrients and microorganisms| Coral-associated bacteria demonstrate phylosymbiosis and cophylogeny | rMicrobiome of Pseudodiploria strigosa across Bermuda's reefs|
 
-### Metatrasncriptomic
+### Metatranscriptomic
 
 |   SRX4803467                            |               SRX6899989                         |  
 |:---------------------------------------:|:------------------------------------------------:|
 |           1                             |               1                                  |
 |Antarctic marine metatranscriptome       | Metatranscriptomic data from Coast of New Jersey |
+
+# Metagenomic
+
+## Atlas workflow
+
+<img src="./issues/ATLAS_scheme.png">
+
+## Sunbeam workflow
+
+<img src="./issues/SUNBEAM_scheme.png">
+
+## mOTU2 an alternative for taxonomic assignation
+
+<img src="./issues/mOTU.png">
+
+## Comparison between workflow
+
+<img src="./issues/table_comparison.png">
+
+# Metagenomic
+
+## Metatrans workflow
+
+<img src="./issues/metatrans.jpeg">
+
+## Samsa2 workflow
+
+<img src="./issues/samsa2.jpg">
+
+
+
 
 
 
