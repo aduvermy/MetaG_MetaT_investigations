@@ -28,7 +28,7 @@ sed -i '1 i\@Version:0.9.1\n@SampleID:CAMI_low\n\n' metabat_bins.tsv
 sed -i '1 i\@Version:0.9.1\n@SampleID:CAMI_low\n\n' maxbin_bins.tsv
 sed -i '1 i\@Version:0.9.1\n@SampleID:CAMI_low\n\n' gs_read_mapping.binning.length
 ```
-amber
+amber  
 ``̀
 amber.py -g gs_read_mapping.binning.length -o ./ maxbin_bins.tsv metabat_bins.tsv
 ```
