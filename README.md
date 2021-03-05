@@ -8,7 +8,7 @@ Metagenomic &amp; metatransciptomic coral reaf investigations
 | Sample 1| Sample 1 5kbp|   sample 1  |
 
 
-###Launch AMBER
+### ATLAS to AMBER
 
 Convert fasta to csv  
 ```
@@ -32,6 +32,7 @@ amber
 ``̀
 amber.py -g gs_read_mapping.binning.length -o ./ maxbin_bins.tsv metabat_bins.tsv
 ```
+
 # Public datasets
 
 ### Metagenomic seawater
