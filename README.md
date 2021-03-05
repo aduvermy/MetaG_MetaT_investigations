@@ -7,6 +7,31 @@ Metagenomic &amp; metatransciptomic coral reaf investigations
 |:-------:|:------------:|:-----------:|
 | Sample 1| Sample 1 5kbp|   sample 1  |
 
+
+###Launch AMBER
+
+Convert fasta to csv  
+```
+./convert_bins.py -p ../../../RL/RL-S001--insert-270/binning/DASTool/bins/*maxbin*.fasta -s ../../../RL/RL-S001--insert-270/sequence_alignment/RL-S001--insert-270.sam -o ../../../AMBER/RL/maxbin_bins.tsv
+
+./convert_bins.py -p ../../../RL/RL-S001--insert-270/binning/DASTool/bins/*metabat*.fasta -s ../../../RL/RL-S001--insert-270/sequence_alignment/RL-S001--insert-270.sam -o ../../../AMBER/RL/metabat_bins.tsv
+```
+
+Add column LENGTH to GS.bining
+```
+./add_column_length.py -s ../../../RL/RL-S001--insert-270/sequence_alignment/RL-S001--insert-270.sam -g ../../../AMBER/RL/
+```
+
+Add sample name on first line of files used by amber
+```
+sed -i '1 i\@Version:0.9.1\n@SampleID:CAMI_low\n\n' metabat_bins.tsv
+sed -i '1 i\@Version:0.9.1\n@SampleID:CAMI_low\n\n' maxbin_bins.tsv
+sed -i '1 i\@Version:0.9.1\n@SampleID:CAMI_low\n\n' gs_read_mapping.binning.length
+```
+amber
+``̀
+amber.py -g gs_read_mapping.binning.length -o ./ maxbin_bins.tsv metabat_bins.tsv
+```
 # Public datasets
 
 ### Metagenomic seawater
