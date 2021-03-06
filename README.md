@@ -1,4 +1,4 @@
-# MetaG_MetaT_investigations
+h # MetaG_MetaT_investigations
 Metagenomic &amp; metatransciptomic coral reaf investigations
 
 # CAMI
@@ -19,7 +19,7 @@ Convert fasta to csv
 
 Add column LENGTH to GS.bining
 ```
-./add_column_length.py -s ../../../RL/RL-S001--insert-270/sequence_alignment/RL-S001--insert-270.sam -g ../../../AMBER/RL/
+./add_column_length.py -s ../../../RL/data/RL.fastq -g ../../../AMBER/RL/gs_read_mapping.binning -o ../../../AMBER/RL/gs_read_mapping.binning.length 
 ```
 
 Add sample name on first line of files used by amber
