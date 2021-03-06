@@ -2,15 +2,15 @@
 
 import os
 import argparse
-from Bio.SeqIO.FastaIO import SimpleFastaParser
+from Bio import SeqIO
 import pandas as pd
 
 parser = argparse.ArgumentParser(description='Check my input')
 
-parser.add_argument('--samFile', '-s', type=str,
-                    help='Path of sam file. For exemple :  "sequence_alignment/mysample.sam"')
+parser.add_argument('--fastq', '-f', type=str,
+                    help='Path of fastq file. For exemple :  "sequence_alignment/mysample.fastq"')
 parser.add_argument('--goldStandard', '-g', type=str,
-                    help='Path of sam file. For exemple :  "gs_read_mapping.bining"')
+                    help='Path of goldStandard file. For exemple :  "gs_read_mapping.bining"')
 parser.add_argument('--output', '-o', type=str,
                     help='output file tsv :  "gs_read_mapping.bining.length"')
 
@@ -28,27 +28,22 @@ gs = gs.drop(['TAXID', '_READID'], axis = 1 ) #drop useless column
 print("END PROCESS\n")
 
 
-print("PROCESS READING SAM")
+print("PROCESS READING FASTQ")
 reads = dict()
-#Build TSV bins with seqID == readID
-try:
-    samF = open(args.samFile, 'r')
-except:
-    print(f"ERROR with {args.samFile}\n\n")
-    exit()
 
-for line in samF:
-    if line[0]=="@":
-        continue
-    line=line.strip().split('\t')
-    readID = line[0]
-    len_reads = len(line[9])
-    reads[readID] = len_reads
+for seqRecord in SeqIO.parse(args.fastq, "fastq"):
+       len_reads = len(seqRecord.seq)
+       readID = seqRecord.id[:-2]
+       reads[readID] = len_reads
 print("END PROCESS\n")
 
-print("PROCESS READING SAM")
+
+
+
+print("PROCESS WRITING GS WITH COL LENGTH")
 reads_len = pd.DataFrame(list(reads.items()), columns=['@@SEQUENCEID', '_LENGTH'])
 #print(pd.concat([gs, reads_len['_LENGTH']] , axis=1, join='inner'))
 gs_final = gs.merge(reads_len, on= "@@SEQUENCEID")
+print(gs_final)
 gs_final.to_csv(args.output, sep="\t", index=False)
 print("END PROCESS\n")
