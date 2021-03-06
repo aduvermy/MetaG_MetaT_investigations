@@ -19,7 +19,7 @@ Convert fasta to csv
 
 Add column LENGTH to GS.bining
 ```
-./add_column_length.py -s ../../../RL/data/RL.fastq -g ../../../AMBER/RL/gs_read_mapping.binning -o ../../../AMBER/RL/gs_read_mapping.binning.length 
+./add_column_length.py -s ../../../RL/data/RL.fastq -g ../../../AMBER/RL/gs_read_mapping.binning -o ../../../AMBER/RL/gs_read_mapping.binning.length
 ```
 
 Add sample name on first line of files used by amber
@@ -31,7 +31,7 @@ sed -i '1 i\@Version:0.9.1\n@SampleID:CAMI_low\n\n' gs_read_mapping.binning.leng
 amber  
 
 ``̀
-amber.py -g gs_read_mapping.binning.length -o ./ maxbin_bins.tsv metabat_bins.tsv
+amber.py -g gs_read_mapping.binning_strip --ncbi_nodes_file taxdump/nodes.dmp -o ./ maxbin_bins.tsv metabat_bins.tsv 
 ``̀
 Download taxdump.tar.gz from ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz, extract nodes.tmp, and provide it to AMBER with option --ncbi_nodes_file
 
