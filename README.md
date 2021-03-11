@@ -41,23 +41,21 @@ amber.py -g gs_read_mapping.binning_strip --ncbi_nodes_file taxdump/nodes.dmp -o
 ``̀
 Download taxdump.tar.gz from ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz, extract nodes.tmp, and provide it to AMBER with option --ncbi_nodes_file
 
-## ATLAS binning observation
+## ATLAS binning evaluation
 
 DAS Tool is an automated method that integrates a flexible number of binning algorithms to calculate an optimized, non-redundant set of bins from a single assembly. We show that this approach generates a larger number of high-quality genomes than achieved using any single tool.
 In ATLAS pipeline DAS Tool merge information from metatabat and maxbin.
 
-### LOW
 
-<img src="./issues/atlas_binning/compl_purity_low.png">
+LOW                        |  HIGH
+:-------------------------:|:-------------------------:
+<img src="./issues/atlas_binning/compl_purity_low.png">  |  <img src="./issues/atlas_binning/compl_purity_high.png">
+<img src="./issues/atlas_binning/contamin_low.png"> |   <img src="./issues/atlas_binning/contamin_high.png">
 
-<img src="./issues/atlas_binning/contamin_low.png">
 
 
-### HIGH
 
-<img src="./issues/atlas_binning/compl_purity_high.png">
 
-<img src="./issues/atlas_binning/contamin_high.png">
 
 
 # Public datasets
