@@ -53,6 +53,7 @@ Possible choice between spade and megahit for assembly
 DAS Tool is an automated method that integrates a flexible number of binning algorithms to calculate an optimized, non-redundant set of bins from a single assembly. We show that this approach generates a larger number of high-quality genomes than achieved using any single tool.
 In ATLAS pipeline DAS Tool merge results from Metatabat and Maxbin.
 
+**N.B: Recall = completeness, precision = purity**
 
 LOW                        |  HIGH
 :-------------------------:|:-------------------------:
