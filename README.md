@@ -1,4 +1,4 @@
-h # MetaG_MetaT_investigations
+# MetaG_MetaT_investigations
 Metagenomic &amp; metatransciptomic coral reaf investigations
 
 # CAMI
@@ -36,15 +36,22 @@ sed -i '1 i\@Version:0.9.1\n@SampleID:CAMI_low\n\n' gs_read_mapping.binning.leng
 ```
 amber  
 
-``̀
+``` 
 amber.py -g gs_read_mapping.binning_strip --ncbi_nodes_file taxdump/nodes.dmp -o ./ maxbin_bins.tsv metabat_bins.tsv
-``̀
+```   
 Download taxdump.tar.gz from ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz, extract nodes.tmp, and provide it to AMBER with option --ncbi_nodes_file
+
+## ATLAS assembly evaluation 
+
+Possible choice between spade and megahit for assembly
+
+
+
 
 ## ATLAS binning evaluation
 
 DAS Tool is an automated method that integrates a flexible number of binning algorithms to calculate an optimized, non-redundant set of bins from a single assembly. We show that this approach generates a larger number of high-quality genomes than achieved using any single tool.
-In ATLAS pipeline DAS Tool merge information from metatabat and maxbin.
+In ATLAS pipeline DAS Tool merge results from Metatabat and Maxbin.
 
 
 LOW                        |  HIGH
@@ -53,6 +60,10 @@ LOW                        |  HIGH
 <img src="./issues/atlas_binning/contamin_low.png"> |   <img src="./issues/atlas_binning/contamin_high.png">
 
 
+
+We observe that Maxbin is quite better than Metabat on low complexity samples. But Metabat  worked much better once applied to high complexity dataset.
+By merging Metabat and Maxbin results, DAS Tool improves the completeness of the bins. 
+/!\ On a low complexity dataset, the completeness of bins is maximized but the contamination is increased too.
 
 
 
