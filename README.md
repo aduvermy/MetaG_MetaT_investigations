@@ -17,6 +17,12 @@ Convert fasta to csv
 ./convert_bins.py -p ../../../RL/RL-S001--insert-270/binning/DASTool/bins/*metabat*.fasta -s ../../../RL/RL-S001--insert-270/sequence_alignment/RL-S001--insert-270.sam -o ../../../AMBER/RL/metabat_bins.tsv
 ```
 
+From DASTool
+```
+./convert_bins.py -c ../../../RL/RL-S001--insert-270/binning/DASTool/cluster_attribution.csv -s ../../../RL/RL-S001--insert-270/sequence_alignment/RL-S001--insert-270.sam -o ../../../AMBER/RL/dastool_bins.tsv
+
+```
+
 Add column LENGTH to GS.bining
 ```
 ./add_column_length.py -s ../../../RL/data/RL.fastq -g ../../../AMBER/RL/gs_read_mapping.binning -o ../../../AMBER/RL/gs_read_mapping.binning.length
@@ -35,11 +41,30 @@ amber.py -g gs_read_mapping.binning_strip --ncbi_nodes_file taxdump/nodes.dmp -o
 ``̀
 Download taxdump.tar.gz from ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz, extract nodes.tmp, and provide it to AMBER with option --ncbi_nodes_file
 
+## ATLAS binning observation
+
+DAS Tool is an automated method that integrates a flexible number of binning algorithms to calculate an optimized, non-redundant set of bins from a single assembly. We show that this approach generates a larger number of high-quality genomes than achieved using any single tool.
+In ATLAS pipeline DAS Tool merge information from metatabat and maxbin.
+
+### LOW
+
+<img src="./issues/atlas_binning/compl_purity_low.png">
+
+<img src="./issues/atlas_binning/contamin_low.png">
+
+
+### HIGH
+
+<img src="./issues/atlas_binning/compl_purity_high.png">
+
+<img src="./issues/atlas_binning/contamin_high.png">
+
+
 # Public datasets
 
 ### Metagenomic seawater
 
-|   SRX7913443                            |   SPRJNA329908      |       PRJEB22493              |
+|   SRX7913443                            |   SPRJNA329908      |      PRJEB22493            |
 |:---------------------------------------:|:-------------------:|:-----------------------------:|
 |           1                             |               329   |         495                   |
 |shotgun sequencing of sediment sample D18| seawater metagenome | reference alignment + assembly|
@@ -77,7 +102,7 @@ Download taxdump.tar.gz from ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz,
 
 <img src="./issues/table_comparison.png">
 
-# Metagenomic
+# Metatranscriptomic
 
 ## Metatrans workflow
 
