@@ -8,6 +8,22 @@ Metagenomic &amp; metatransciptomic coral reaf investigations
 | Sample 1| Sample 1 5kbp|   sample 1  |
 
 
+/!\ Atlas had few problems with medium 
+-> Possibly linked to insert size and mate-pair library 
+
+[Paired-end read confusion - library, fragment or insert size?](http://thegenomefactory.blogspot.com/2013/08/paired-end-read-confusion-library.html)
+
+[Using Velvet with mate-pair sequences](http://thegenomefactory.blogspot.com/2012/09/using-velvet-with-mate-pair-sequences.html)
+
+Mate-pair reads are extremely valuable in a de novo setting as they provide long-range information about the genome, and can help link contigs together into larger scaffolds. They have been used reliably for years on the 454 FLX platform, but used less often on the Illumina platform. I think the main reasons for this are the poorer reliability of the Illumina mate-pair protocol and the larger amount of DNA required compared to a PE library.
+
+We can consider MP reads as the same as PE reads, but with a larger distance between them ("insert size"). But there is one technical difference due to the circularization procedure used in their preparation. PE reads are oriented "opp-in" (L=>.....<=R), whereas MP reads are oriented "opp-out" (L<=.....=>R).
+
+<img src="./issues/atlas_binning/insert_sch.png"> 
+
+Note that in order to use SPAdes 3.1+ for mate-pair only assemblies you need to have the so-called "high quality mate pairs". Right now such mate pairs can only be generated using Nextera mate pair protocol. Everything else would give you suboptimal assemblies.
+[MP and SPADE](https://www.biostars.org/p/111202/)
+
 ### ATLAS to AMBER
 
 Convert fasta to csv  
