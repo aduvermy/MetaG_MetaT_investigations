@@ -8,22 +8,25 @@ Metagenomic &amp; metatransciptomic coral reaf investigations
 | Sample 1| Sample 1 5kbp|   sample 1  |
 
 
-## Atlas trouble with medium 
+## ATLAS assembly evaluation 
 
-    -> Possibly linked to insert size and mate-pair library 
+Atlas allows choice between spade and megahit for assembly
+Here we always use SPADE.
+We use metaquast to evaluate the SPADE assembly.
 
-[Paired-end read confusion - library, fragment or insert size?](http://thegenomefactory.blogspot.com/2013/08/paired-end-read-confusion-library.html)
+### ATLAS to Metaquast 
 
-[Using Velvet with mate-pair sequences](http://thegenomefactory.blogspot.com/2012/09/using-velvet-with-mate-pair-sequences.html)
+File used ```SAMPLE/assembly/SAMPLE_final_contigs.fasta```
 
-Mate-pair reads are extremely valuable in a de novo setting as they provide long-range information about the genome, and can help link contigs together into larger scaffolds. They have been used reliably for years on the 454 FLX platform, but used less often on the Illumina platform. I think the main reasons for this are the poorer reliability of the Illumina mate-pair protocol and the larger amount of DNA required compared to a PE library.
+```metaquast.py -o ./ --min-contig 150 SAMPLE_final_contigs.fasta``` 
 
-We can consider MP reads as the same as PE reads, but with a larger distance between them ("insert size"). But there is one technical difference due to the circularization procedure used in their preparation. PE reads are oriented "opp-in" (L=>.....<=R), whereas MP reads are oriented "opp-out" (L<=.....=>R).
+### METASQUEEZE to Metaquast
 
-<img src="./issues/insert_sch.jpg"> 
+File used ```SAMPLE/results/01.SAMPLE.fasta```
 
-Note that in order to use SPAdes 3.1+ for mate-pair only assemblies you need to have the so-called "high quality mate pairs". Right now such mate pairs can only be generated using Nextera mate pair protocol. Everything else would give you suboptimal assemblies.
-[MP and SPADE](https://www.biostars.org/p/111202/)
+```metaquast.py -o ./ --min-contig 150 01.SAMPLE.fasta``` 
+
+## ATLAS binning evaluation
 
 ### ATLAS to AMBER
 
@@ -58,15 +61,6 @@ amber.py -g gs_read_mapping.binning_strip --ncbi_nodes_file taxdump/nodes.dmp -o
 ```   
 Download taxdump.tar.gz from ftp://ftp.ncbi.nih.gov/pub/taxonomy/taxdump.tar.gz, extract nodes.tmp, and provide it to AMBER with option --ncbi_nodes_file
 
-## ATLAS assembly evaluation 
-
-Possible choice between spade and megahit for assembly
-
-
-
-
-## ATLAS binning evaluation
-
 DAS Tool is an automated method that integrates a flexible number of binning algorithms to calculate an optimized, non-redundant set of bins from a single assembly. We show that this approach generates a larger number of high-quality genomes than achieved using any single tool.
 In ATLAS pipeline DAS Tool merge results from Metatabat and Maxbin.
 
@@ -77,13 +71,27 @@ LOW                        |  HIGH
 <img src="./issues/atlas_binning/compl_purity_low.png">  |  <img src="./issues/atlas_binning/compl_purity_high.png">
 <img src="./issues/atlas_binning/contamin_low.png"> |   <img src="./issues/atlas_binning/contamin_high.png">
 
-
-
-We observe that Maxbin is quite better than Metabat on low complexity samples. But Metabat  worked much better once applied to high complexity dataset.
-By merging Metabat and Maxbin results, DAS Tool improves the completeness of the bins. 
+We observe that Maxbin is quite better than Metabat on low complexity samples. But Metabat  worked much better once applied to high complexity dataset.  
+By merging Metabat and Maxbin results, DAS Tool improves the completeness of the bins.   
 /!\ On a low complexity dataset, the completeness of bins is maximized but the contamination is increased too.
 
 
+### Atlas trouble with medium 
+
+    -> Possibly linked to insert size and mate-pair library 
+
+[Paired-end read confusion - library, fragment or insert size?](http://thegenomefactory.blogspot.com/2013/08/paired-end-read-confusion-library.html)
+
+[Using Velvet with mate-pair sequences](http://thegenomefactory.blogspot.com/2012/09/using-velvet-with-mate-pair-sequences.html)
+
+Mate-pair reads are extremely valuable in a de novo setting as they provide long-range information about the genome, and can help link contigs together into larger scaffolds. They have been used reliably for years on the 454 FLX platform, but used less often on the Illumina platform. I think the main reasons for this are the poorer reliability of the Illumina mate-pair protocol and the larger amount of DNA required compared to a PE library.
+
+We can consider MP reads as the same as PE reads, but with a larger distance between them ("insert size"). But there is one technical difference due to the circularization procedure used in their preparation. PE reads are oriented "opp-in" (L=>.....<=R), whereas MP reads are oriented "opp-out" (L<=.....=>R).
+
+<img src="./issues/insert_sch.jpg"> 
+
+Note that in order to use SPAdes 3.1+ for mate-pair only assemblies you need to have the so-called "high quality mate pairs". Right now such mate pairs can only be generated using Nextera mate pair protocol. Everything else would give you suboptimal assemblies.
+[MP and SPADE](https://www.biostars.org/p/111202/)
 
 
 
