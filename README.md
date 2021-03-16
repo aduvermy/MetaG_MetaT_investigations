@@ -26,6 +26,18 @@ File used ```SAMPLE/results/01.SAMPLE.fasta```
 
 ```metaquast.py -o ./ --min-contig 150 01.SAMPLE.fasta``` 
 
+### LOW
+
+
+Sample Name	| N50 (Kbp) |	N75 (Kbp) |	L50 (K)	|L75 (K)	| Largest contig (Kbp)|Length (Mbp
+:----------:|:----------:|:----------:|:-------:|:---------:|:------------------:|:------:
+Atlas_low	|64.2Kbp |17.4Kbp|0.3K|1002.0K|1228.1Kbp |95.0Mbp|
+Mago_low |	21.7Kbp | 1.4Kbp| 0.8K |7866.0K |1259.5Kbp | 121.2Mbp |
+SqueezeMeta_low	| 22.2Kbp |1.4Kbp | 0.7K | 7765.0K | 1259.5Kbp | 121.1Mbp |
+sunbeam_low	| 0.6Kbp| 0.4Kbp| 43.7K| 152796.0K | 81.1Kbp | 193.7Mbp
+
+<img src="./issues/quast_num_contigs.png">
+
 ## ATLAS binning evaluation
 
 ### ATLAS to AMBER
