@@ -8,12 +8,6 @@ Metagenomic &amp; metatransciptomic coral reaf investigations
 | Sample 1| Sample 1 5kbp|   sample 1  |
 
 
-## ATLAS assembly evaluation 
-
-Atlas allows choice between spade and megahit for assembly
-Here we always use SPADE.
-We use metaquast to evaluate the SPADE assembly.
-
 ### ATLAS to Metaquast 
 
 File used ```SAMPLE/assembly/SAMPLE_final_contigs.fasta```
@@ -26,19 +20,29 @@ File used ```SAMPLE/results/01.SAMPLE.fasta```
 
 ```metaquast.py -o ./ --min-contig 150 01.SAMPLE.fasta``` 
 
-### LOW
+### Pipeline assembly evaluation
 
+**Largest contig** is the length of the longest contig in the assembly.
 
-Sample Name	| N50 (Kbp) |	N75 (Kbp) |	L50 (K)	|L75 (K)	| Largest contig (Kbp)|Length (Mbp
-:----------:|:----------:|:----------:|:-------:|:---------:|:------------------:|:------:
-Atlas_low	|64.2Kbp |17.4Kbp|0.3K|1002.0K|1228.1Kbp |95.0Mbp|
-Mago_low |	21.7Kbp | 1.4Kbp| 0.8K |7866.0K |1259.5Kbp | 121.2Mbp |
-SqueezeMeta_low	| 22.2Kbp |1.4Kbp | 0.7K | 7765.0K | 1259.5Kbp | 121.1Mbp |
-sunbeam_low	| 0.6Kbp| 0.4Kbp| 43.7K| 152796.0K | 81.1Kbp | 193.7Mbp
+**Assembly length** is the total number of bases in the assembly.
 
-<img src="./issues/quast_num_contigs.png">
+**N50** is the length for which the collection of all contigs of that length or longer covers at least half an assembly.
 
-## ATLAS binning evaluation
+<img src="./issues/metaquast_res.png"> 
+
+Logically, we observe an increase of the assembly length with the raise of the complexity.
+At the same time, the largest contig length have decreased with the complexity. As have the N50.
+These trends are the same for all  pipelines.
+
+Surprisingly, Mago and SqueezeMeta gave metrics quite similare whatever the complexity. 
+Mago and SqueezeMeta use different tools to process their assembly (Spade and Megahit). 
+It seems the choice of the default option of both pipelines leads to a similar assembly.
+ 
+Notice that Atlas gives the best N50 whatever the complexity.
+
+Finally, we observed Sunbeam gave bad results compared to the others.
+
+# ATLAS binning evaluation
 
 ### ATLAS to AMBER
 
