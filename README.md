@@ -3,6 +3,11 @@ Metagenomic &amp; metatransciptomic coral reaf investigations
 
 # CAMI
 
+CAMI is a database for metagenomics tools comparison providing gold standard assembly and binning results for 3 datasets of different complexities.   
+    • High complexity : a sample with numerous genomes and circular elements  
+    • Medium complexity : a sample with a large insert size ( 5kb) and in mate-pair   
+    • Low complexity :  a sample with small insert size.  
+
 |   LOW   |   MEDIUM     |   HIGH      |
 |:-------:|:------------:|:-----------:|
 | Sample 1| Sample 1 5kbp|   sample 1  |
