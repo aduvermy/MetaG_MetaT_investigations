@@ -114,7 +114,22 @@ We can consider MP reads as the same as PE reads, but with a larger distance bet
 Note that in order to use SPAdes 3.1+ for mate-pair only assemblies you need to have the so-called "high quality mate pairs". Right now such mate pairs can only be generated using Nextera mate pair protocol. Everything else would give you suboptimal assemblies.
 [MP and SPADE](https://www.biostars.org/p/111202/)
 
-### Pipeline annotation evaluation
+# Pipeline annotation evaluation
+
+### CAMI Profile to Krona
+
+Build txt file for Krona
+```
+./profile2krona.py -g ../../AMBER/RM/gs_read_mapping_rm1_s002_insert_5000_5gb.binning -p ../../AMBER/RM/goldstandard_medium_2.profile -o medium_taxo
+``` 
+Install Krona
+``` 
+singularity run docker://biocontainers/krona:v2.7.1_cv1
+```
+Launch Krona
+```
+ktImportText medium_taxo
+```
 
 LOW                    |       MEDIUM        |  HIGH
 :---------------------:|:-------------:|:------------------:
@@ -125,16 +140,16 @@ LOW                    |       MEDIUM        |  HIGH
 ### Metagenomic seawater
 
 |   SRX7913443                            |   SPRJNA329908      |      PRJEB22493            |
-|:---------------------------------------:|:-------------------:|:-----------------------------:|
-|           1                             |               329   |         495                   |
+|:---------------------------------------:|:-------------------:|:--------------------------:|
+|           1                             |               329   |        495                 |
 |shotgun sequencing of sediment sample D18| seawater metagenome | reference alignment + assembly|
 
 
 ### Coral reaf metagenomic
 
-|   PRJNA357506                           |   PRJEB28183        |       mgp81589                |
-|:---------------------------------------:|:-------------------:|:-----------------------------:|
-|           16                            |               689   |         26                    |
+|   PRJNA357506                           |   PRJEB28183        |     mgp81589                |
+|:---------------------------------------:|:-------------------:|:---------------------------:|
+|           16                            |               689   |        26                   |
 |impact of aquaculture effluent on Red Sea coral reef water nutrients and microorganisms| Coral-associated bacteria demonstrate phylosymbiosis and cophylogeny | rMicrobiome of Pseudodiploria strigosa across Bermuda's reefs|
 
 ### Metatranscriptomic
