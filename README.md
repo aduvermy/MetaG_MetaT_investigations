@@ -114,7 +114,11 @@ We can consider MP reads as the same as PE reads, but with a larger distance bet
 Note that in order to use SPAdes 3.1+ for mate-pair only assemblies you need to have the so-called "high quality mate pairs". Right now such mate pairs can only be generated using Nextera mate pair protocol. Everything else would give you suboptimal assemblies.
 [MP and SPADE](https://www.biostars.org/p/111202/)
 
+### Pipeline annotation evaluation
 
+LOW                    |       MEDIUM        |  HIGH
+:---------------------:|:-------------:|:------------------:
+<img src="./issues/krona_low_profile.svg">  |  <img src="./issues/krona_medium_profile.svg">|<img src="./issues/krona_high_profile.svg"> 
 
 # Public datasets
 
