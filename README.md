@@ -135,29 +135,62 @@ LOW                    |       MEDIUM        |  HIGH
 :---------------------:|:-------------:|:------------------:
 <img src="./issues/krona_low_profile.svg">  |  <img src="./issues/krona_medium_profile.svg">|<img src="./issues/krona_high_profile.svg"> 
 
+### Atlas results from CAMI to Krona
+
+
+```
+./MAGcontigBAM_2reads.py -s ../../RL/genomes/alignments/RL-S001--insert-270.sam -g ../../RL/genomes/clustering/contig2genome.tsv -o reads2MAG.tsv
+```
+
+```
+./reads2genome_2Krona.py -r reads2MAG.tsv -t ../../RL/genomes/taxonomy/gtdb/gtdbtk.bac120.summary.tsv -o low_krona.taxonomy
+```
+
+Launch Krona
+```
+ktImportText low_krona.taxonomy
+```
+
+
+
 # Public datasets
 
-### Metagenomic seawater
+### Metagenomic 
 
-|   SRX7913443                            |   SPRJNA329908      |      PRJEB22493            |
-|:---------------------------------------:|:-------------------:|:--------------------------:|
-|           1                             |               329   |        495                 |
-|shotgun sequencing of sediment sample D18| seawater metagenome | reference alignment + assembly|
+https://www.ncbi.nlm.nih.gov/sra/SRX1440049[accn
+
+```
+### SRA_sample2download.txt ###
+SRR2937350
+SRR2937346
+SRR2937345
+SRR2937356
+SRR2937355
+SRR2937354
+SRR2937353
+SRR2937352
+SRR2937351
+SRR2937349
+SRR2937348
+SRR2937347
+```
+```
+## download data
+for i in $(cat ../../SRA_sample2download.txt); do echo $i; ./fasterq-dump --concatenate-reads -O ../../interleaved-fastq/ -p -t ../../tmp2 $i; done
+```
+```
+## output interleaved-fastq
+for f in $(find ../../data_coral/interleaved-fastq -type f);do  echo $f ; ./SRA_2interleaved_fastq.py -f  $f  -o ../../data_coral/  ; done
+```
+
+```
+## output PE fastq
+for f in $(find ../../data_coral/interleaved-fastq -type f);do  echo $f ; ./separate_reads $f ; done
+
+```
 
 
-### Coral reaf metagenomic
 
-|   PRJNA357506                           |   PRJEB28183        |     mgp81589                |
-|:---------------------------------------:|:-------------------:|:---------------------------:|
-|           16                            |               689   |        26                   |
-|impact of aquaculture effluent on Red Sea coral reef water nutrients and microorganisms| Coral-associated bacteria demonstrate phylosymbiosis and cophylogeny | rMicrobiome of Pseudodiploria strigosa across Bermuda's reefs|
-
-### Metatranscriptomic
-
-|   SRX4803467                            |               SRX6899989                         |  
-|:---------------------------------------:|:------------------------------------------------:|
-|           1                             |               1                                  |
-|Antarctic marine metatranscriptome       | Metatranscriptomic data from Coast of New Jersey |
 
 # Metagenomic
 
