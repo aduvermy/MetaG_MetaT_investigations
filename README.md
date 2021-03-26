@@ -151,7 +151,9 @@ Launch Krona
 ktImportText low_krona.taxonomy
 ```
 
-
+LOW                    |  HIGH
+:---------------------:|:------------------:
+<img src="./issues/krona_low_profile.svg">  | <img src="./issues/krona_high_profile.svg"> 
 
 # Public datasets
 
@@ -174,19 +176,19 @@ SRR2937349
 SRR2937348
 SRR2937347
 ```
+
 ```
 ## download data
-for i in $(cat ../../SRA_sample2download.txt); do echo $i; ./fasterq-dump --concatenate-reads -O ../../interleaved-fastq/ -p -t ../../tmp2 $i; done
+for i in $(cat ../../SRA_sample2download.txt); do echo $i; ./fasterq-dump --concatenate-reads -O ../../sra_raw/ -p -t ../../tmp2 $i; done
 ```
 ```
 ## output interleaved-fastq
-for f in $(find ../../data_coral/interleaved-fastq -type f);do  echo $f ; ./SRA_2interleaved_fastq.py -f  $f  -o ../../data_coral/  ; done
+for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./SRA_2interleaved_fastq.py -f  $f  -o ../../data_coral/  ; done
 ```
 
 ```
 ## output PE fastq
-for f in $(find ../../data_coral/interleaved-fastq -type f);do  echo $f ; ./separate_reads $f ; done
-
+for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./separate_reads.py -f $f  -o ../../squeezemeta/coral_data/fastqs/ ; done
 ```
 
 
