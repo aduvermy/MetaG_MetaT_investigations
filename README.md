@@ -153,7 +153,24 @@ ktImportText low_krona.taxonomy
 
 LOW                    |  HIGH
 :---------------------:|:------------------:
-<img src="./issues/krona_low_profile.svg">  | <img src="./issues/krona_high_profile.svg"> 
+  | 
+
+
+### Atlas results from CAMI to Krona
+
+
+```
+./squeezeM2Krona.py -t ../../../squeezemeta/RH/CAMI_high/results/11.CAMI_high.mcount -o ../../../Krona/squeeze-high.taxonomy
+```
+
+Launch Krona
+```
+ktImportText squeeze-high.taxonomy
+```
+
+LOW                    |  HIGH
+:---------------------:|:------------------:
+  | 
 
 # Public datasets
 
