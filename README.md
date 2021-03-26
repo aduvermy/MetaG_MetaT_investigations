@@ -156,7 +156,7 @@ LOW                    |  HIGH
   | 
 
 
-### Atlas results from CAMI to Krona
+### SqueezeMeta results from CAMI to Krona
 
 
 ```
