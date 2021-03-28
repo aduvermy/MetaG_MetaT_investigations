@@ -153,7 +153,7 @@ ktImportText low_krona.taxonomy
 
 LOW                    |  HIGH
 :---------------------:|:------------------:
-  | 
+ <img src="./issues/Atlas-low_krona.svg">  |  <img src="./issues/Atlas-high_krona.svg">| 
 
 
 ### SqueezeMeta results from CAMI to Krona
@@ -170,7 +170,8 @@ ktImportText squeeze-high.taxonomy
 
 LOW                    |  HIGH
 :---------------------:|:------------------:
-  | 
+ a mettre  |  <img src="./issues/SqueezeM-high_krona.svg">| 
+
 
 # Public datasets
 
