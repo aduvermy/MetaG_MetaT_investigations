@@ -139,11 +139,8 @@ LOW                    |       MEDIUM        |  HIGH
 
 
 ```
-./MAGcontigBAM_2reads.py -s ../../RL/genomes/alignments/RL-S001--insert-270.sam -g ../../RL/genomes/clustering/contig2genome.tsv -o reads2MAG.tsv
-```
+./atlas2Krona.py -o ../../../Krona/Atlas/low/Atlas-high_krona.taxo -t ../../../atlas/RH/genomes/taxonomy/gtdb/gtdbtk.bac120.summary.tsv -r ../../../atlas/RH/genomes/counts/raw_counts_genomes.tsv -u ../../../atlas/RH/genomes/alignments/unmapped/
 
-```
-./reads2genome_2Krona.py -r reads2MAG.tsv -t ../../RL/genomes/taxonomy/gtdb/gtdbtk.bac120.summary.tsv -o low_krona.taxonomy
 ```
 
 Launch Krona
@@ -153,7 +150,7 @@ ktImportText low_krona.taxonomy
 
 LOW                    |  HIGH
 :---------------------:|:------------------:
- <img src="./issues/Atlas-low_krona.svg">  |  <img src="./issues/Atlas-high_krona.svg">| 
+ <img src="./issues/atlas-low_krona.svg">  |  <img src="./issues/Atlas-high_krona.svg">| 
 
 
 ### SqueezeMeta results from CAMI to Krona
