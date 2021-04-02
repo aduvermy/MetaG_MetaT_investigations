@@ -155,14 +155,16 @@ LOW                    |  HIGH
 
 ### SqueezeMeta results from CAMI to Krona
 
-
 ```
-./squeezeM2Krona.py -t ../../../squeezemeta/RH/CAMI_high/results/11.CAMI_high.mcount -o ../../../Krona/squeeze-high.taxonomy
+##INSTALL KRONA
+git clone https://github.com/marbl/Krona.git
+cd Krona/KronaTools
+./install.pl
+``` 
 ```
-
-Launch Krona
-```
-ktImportText squeeze-high.taxonomy
+## ./CAMI_high = repository with squeezeM results
+CAMI_high = loadSQM('./CAMI_high/', engine = 'data.table')
+exportKrona(CAMI_high)
 ```
 
 LOW                    |  HIGH
