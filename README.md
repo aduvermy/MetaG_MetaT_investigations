@@ -162,8 +162,11 @@ cd Krona/KronaTools
 ./install.pl
 ``` 
 ```
+library("SQMtools")
+
 ## ./CAMI_high = repository with squeezeM results
 CAMI_high = loadSQM('./CAMI_high/', engine = 'data.table')
+
 exportKrona(CAMI_high)
 ```
 
