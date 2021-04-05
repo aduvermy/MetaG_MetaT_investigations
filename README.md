@@ -170,9 +170,9 @@ CAMI_high = loadSQM('./CAMI_high/', engine = 'data.table')
 exportKrona(CAMI_high)
 ```
 
-LOW                    |  HIGH
-:---------------------:|:------------------:
- a mettre  |  <img src="./issues/SqueezeM-high_krona.svg">| 
+LOW                    |        medium      |  HIGH
+:---------------------:|:------------------:|:------------------:
+ <img src="./issues/SqueezeM-low_krona.svg">| <img src="./issues/squeezeM-medium_krona.svg">  |  <img src="./issues/SqueezeM-high_krona.svg">| 
 
 
 # Public datasets
