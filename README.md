@@ -226,7 +226,8 @@ for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./SRA_2interleav
 ```
 ## output PE fastq
 for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./separate_reads.py -f $f  -o ../../squeezemeta/coral_data/fastqs/ ; done
-```
+``` 
+
 
 
 
