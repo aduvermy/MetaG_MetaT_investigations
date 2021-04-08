@@ -177,7 +177,7 @@ LOW                    |        medium      |  HIGH
 
 ### CAMI reads unclassified/noHits comparison
 
-<img src="./issues/domain_proportion.png">
+<img src="./issues/unclassified_reads.png">
 
 ### CAMI taxonomy comparison
 
