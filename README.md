@@ -196,7 +196,10 @@ LOW                    |        medium      |  HIGH
 ``` 
 ##build metrics from Atlas Results
 ./ComparaisonAtlas.py -g -g gold.profile -p gtbdtk.summary.tsv -s raw_count.tsv -n nombre de reads_de_base
-``` 
+```  
+
+add table or fig  
+
 
 # Public datasets
 
@@ -233,8 +236,8 @@ for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./SRA_2interleav
 ```
 ## output PE fastq
 for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./separate_reads.py -f $f  -o ../../squeezemeta/coral_data/fastqs/ ; done
-``` 
 
+```   
 
 
 # Metagenomic
