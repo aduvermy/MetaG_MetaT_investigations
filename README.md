@@ -174,9 +174,23 @@ LOW                    |        medium      |  HIGH
 :---------------------:|:------------------:|:------------------:
  <img src="./issues/SqueezeM-low_krona.svg">| <img src="./issues/squeezeM-medium_krona.svg">  |  <img src="./issues/SqueezeM-high_krona.svg">| 
 
+
+### CAMI reads unclassified/noHits comparison
+
+<img src="./issues/domain_proportion.png">
+
 ### CAMI taxonomy comparison
 
 <img src="./issues/domain_proportion.png">
+
+### Build home metrics to compared Taxonomy 
+
+``` 
+./CompareSqeezemeta.py  -g gold.profile -p 11.mcount -n nombre de reads_de_base
+``` 
+``` 
+./ComparaisonAtlas.py -g -g gold.profile -p gtbdtk.summary.tsv -s raw_count.tsv -n nombre de reads_de_base
+``` 
 
 # Public datasets
 
