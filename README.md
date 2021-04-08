@@ -174,6 +174,9 @@ LOW                    |        medium      |  HIGH
 :---------------------:|:------------------:|:------------------:
  <img src="./issues/SqueezeM-low_krona.svg">| <img src="./issues/squeezeM-medium_krona.svg">  |  <img src="./issues/SqueezeM-high_krona.svg">| 
 
+### CAMI taxonomy comparison
+
+<img src="./issues/domain_proportion.png">
 
 # Public datasets
 
