@@ -200,6 +200,8 @@ LOW                    |        medium      |  HIGH
 
 <img src="./issues/home_metrics.png">
 
+% found  = n taxa found by the pipeline / n taxa total of the gold standard  at taxonomic rank
+
 
 # Public datasets
 
@@ -231,6 +233,7 @@ for i in $(cat ../../SRA_sample2download.txt); do echo $i; ./fasterq-dump --conc
 ```
 ## output interleaved-fastq
 for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./SRA_2interleaved_fastq.py -f  $f  -o ../../data_coral/  ; done
+
 ```
 
 ```
@@ -238,6 +241,16 @@ for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./SRA_2interleav
 for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./separate_reads.py -f $f  -o ../../squeezemeta/coral_data/fastqs/ ; done
 
 ```   
+
+Instrument : Illumina Hi2500
+Strategy : WGS
+Layout: PE
+
+
+
+### Assembly
+
+metric will be add
 
 
 # Metagenomic
