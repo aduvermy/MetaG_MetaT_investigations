@@ -198,7 +198,7 @@ LOW                    |        medium      |  HIGH
 ./ComparaisonAtlas.py -g -g gold.profile -p gtbdtk.summary.tsv -s raw_count.tsv -n nombre de reads_de_base
 ```  
 
-<img src="./issues/home_metrics.png">
+<img src="./issues/home_metric.png">
 
 % found  = n taxa found by the pipeline / n taxa total of the gold standard  at taxonomic rank
 
@@ -229,18 +229,15 @@ SRR2937347
 ```
 ## download data
 for i in $(cat ../../SRA_sample2download.txt); do echo $i; ./fasterq-dump --concatenate-reads -O ../../sra_raw/ -p -t ../../tmp2 $i; done
-```
-```
+
 ## output interleaved-fastq
 for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./SRA_2interleaved_fastq.py -f  $f  -o ../../data_coral/  ; done
 
-```
-
-```
 ## output PE fastq
 for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./separate_reads.py -f $f  -o ../../squeezemeta/coral_data/fastqs/ ; done
 
-```   
+``` 
+ 
 
 Instrument : Illumina Hi2500
 Strategy : WGS
