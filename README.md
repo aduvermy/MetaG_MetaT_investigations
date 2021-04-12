@@ -198,7 +198,7 @@ LOW                    |        medium      |  HIGH
 ./ComparaisonAtlas.py -g -g gold.profile -p gtbdtk.summary.tsv -s raw_count.tsv -n nombre de reads_de_base
 ```  
 
-<img src="./issues/home_metric.png">
+<img src="./issues/home_metric.jpeg">
 
 % found  = n taxa found by the pipeline / n taxa total of the gold standard  at taxonomic rank
 
@@ -239,9 +239,9 @@ for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./separate_reads
 ``` 
  
 
-Instrument : Illumina Hi2500
-Strategy : WGS
-Layout: PE
+Instrument : Illumina Hi2500  
+Strategy : WGS  
+Layout: PE  
 
 
 
