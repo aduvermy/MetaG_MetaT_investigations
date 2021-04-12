@@ -198,7 +198,7 @@ LOW                    |        medium      |  HIGH
 ./ComparaisonAtlas.py -g -g gold.profile -p gtbdtk.summary.tsv -s raw_count.tsv -n nombre de reads_de_base
 ```  
 
-add table or fig  
+<img src="./issues/home_metrics.png">
 
 
 # Public datasets
