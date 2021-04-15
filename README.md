@@ -206,7 +206,7 @@ LOW                    |        medium      |  HIGH
 # Public datasets
 
 
-    Coral reefs are highly diverse marine ecosystems increasingly threatened on a global scale.
+Coral reefs are highly diverse marine ecosystems increasingly threatened on a global scale.
 During the last several decades corals have been in decline and at least one-third of all coral species are now threatened with extinction. The foundation species of reef ecosystems are stony corals that depend on their symbiotic microalgae and bacteria for aspects of their metabolism, immunity, and environmental adaptation.
 Knowledge of the diversity and function of marine microbiota has rapidly expanded in recent decades through the emergence of molecular techniques that target relevant phylogentic markers and functional genes. 
 Characterizing the taxonomic diversity of microbial communities is one of the primary objectives of metagenomic studies.
