@@ -205,6 +205,16 @@ LOW                    |        medium      |  HIGH
 
 # Public datasets
 
+
+    Coral reefs are highly diverse marine ecosystems increasingly threatened on a global scale.
+During the last several decades corals have been in decline and at least one-third of all coral species are now threatened with extinction. The foundation species of reef ecosystems are stony corals that depend on their symbiotic microalgae and bacteria for aspects of their metabolism, immunity, and environmental adaptation.
+Knowledge of the diversity and function of marine microbiota has rapidly expanded in recent decades through the emergence of molecular techniques that target relevant phylogentic markers and functional genes. 
+Characterizing the taxonomic diversity of microbial communities is one of the primary objectives of metagenomic studies.
+Corals form close associations with a complex consortium of microorganisms, including Symbiodinium (zooxanthellae), Fungi, endolithic algae, Bacteria, Archaea and viruses, with the collective group of organisms referred to as the coral holobiont.(Rohwer et al., 2002; Reshef et al., 2006).
+Investigations lead on CAMI datasets, reveal that taxonomic assignation is a very challenging field. Thanks to 4 different metagenomics pipelines (Atlas, SqueezeMeta, Sunbeam, MAGO) we gripped different bioinformatics tools used in keys steps of metagenomics methodologies to analyze the data obtained from the shotgun sequencing. 
+From now on we can drive analysis adapted on publics coral reef libraries in order to describe with accuracy the coral holobiont community. 
+
+
 ### Metagenomic 
 
 https://www.ncbi.nlm.nih.gov/sra/SRX1440049[accn
@@ -238,16 +248,35 @@ for f in $(find ../../data_coral/sra_raw -type f);do  echo $f ; ./separate_reads
 
 ``` 
  
-
 Instrument : Illumina Hi2500  
 Strategy : WGS  
 Layout: PE  
 
+### Quality control
 
+<img src="./issues/QC_coralReads.png">
+
+
+### Mapping vs cnidaria reference
+
+As a first step, we removed cnidarian read pairs using mapping against a collection of sequences and genomes belonging to the NCBI taxonomy ID 6073 (Cnidaria) deposited in the database. (Cárdenas A & al. 2020)
+Regarding mapping results, 8% of reads from shotgun publics coral reef libraries seems to come from cnidarian origin.
+
+Download reference genome sequence from taxonomy ID
+```
+esearch -db taxonomy -query "txid6073[Organism:exp]"|elink -target nuccore|efilter -query "refseq"|efetch -format fasta > ref.fa
+``` 
+
+Cnidaria = txid6073[Organism:exp]
 
 ### Assembly
 
-metric will be add
+The initial steps in metagenomic data analysis involve the assembly of DNA sequence reads into contiguous consensus sequences (contigs). Assembly of each SRA accession library is processed with the 2 assembly tools (Spade & Megahit) respectively used in our 4 pipelines. 
+SqueezeMeta also gives access to a coassembly mode: with this option reads from all SRA samples are pooled and a single assembly is performed. Base on the SqueezeMeta coassembly approach we investigate the effect of merging libraries before running pipelines compared to a sequential assembly of each library.
+
+Assembly results are shown bellow.
+
+<img src="./issues/coral_data_assembly.png">
 
 
 # Metagenomic
