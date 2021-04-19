@@ -289,13 +289,13 @@ https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SAMN17531896&o=acc_s%3Aa
 ### Design
 M. capitata Field sample nubbins were collected on 30 May 2019. At the time of collection, each nubbin was transferred to a Whirl-pak under water, the water was drained from the Whirl-pak, and then flash-frozen in liquid nitrogen. The Qiagen AllPrep DNA/RNA/miRNA Universal Kit was used to isolate RNA, the TruSeq RNA Sample Preparation Kit v2 (Illumina) was used to prepare strand specific cDNA libraries. The protocol included poly-A selection; quality control was done using an Agilent Bioanalyer and a Thermo Fisher Qubit dsDNA BR (Broad Range) assay kit.
 
-Name: Field: Rep 1
-Instrument: Illumina NovaSeq 6000
-Strategy: RNA-Seq
-Source: METATRANSCRIPTOMIC
-Selection: cDNA
-Layout: PAIRED
-Location : A coral colony from the north end of Coconut Island\, Kneohe Bay\, Hawaii
+
+Instrument: Illumina NovaSeq 6000  
+Strategy: RNA-Seq  
+Source: METATRANSCRIPTOMIC  
+Selection: cDNA  
+Layout: PAIRED  
+Location : A coral colony from the north end of Coconut Island\, Kneohe Bay\, Hawaii  
 
 <img src="./issues/Design_MetaT.png">
 
