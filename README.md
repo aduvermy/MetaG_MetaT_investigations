@@ -215,7 +215,7 @@ Investigations lead on CAMI datasets, reveal that taxonomic assignation is a ver
 From now on we can drive analysis adapted on publics coral reef libraries in order to describe with accuracy the coral holobiont community. 
 
 
-### Metagenomic 
+### Coral reef metagenomic 
 
 https://www.ncbi.nlm.nih.gov/sra/SRX1440049[accn
 
@@ -277,6 +277,27 @@ SqueezeMeta also gives access to a coassembly mode: with this option reads from 
 Assembly results are shown bellow.
 
 <img src="./issues/coral_data_assembly.png">
+
+
+### Coral reef metatranscriptomic
+
+    Montipora capitata meta-transcriptome sequencing during thermal stress
+
+https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SAMN17531896&o=acc_s%3Aa
+
+
+### Design
+M. capitata Field sample nubbins were collected on 30 May 2019. At the time of collection, each nubbin was transferred to a Whirl-pak under water, the water was drained from the Whirl-pak, and then flash-frozen in liquid nitrogen. The Qiagen AllPrep DNA/RNA/miRNA Universal Kit was used to isolate RNA, the TruSeq RNA Sample Preparation Kit v2 (Illumina) was used to prepare strand specific cDNA libraries. The protocol included poly-A selection; quality control was done using an Agilent Bioanalyer and a Thermo Fisher Qubit dsDNA BR (Broad Range) assay kit.
+
+Name: Field: Rep 1
+Instrument: Illumina NovaSeq 6000
+Strategy: RNA-Seq
+Source: METATRANSCRIPTOMIC
+Selection: cDNA
+Layout: PAIRED
+Location : A coral colony from the north end of Coconut Island\, Kneohe Bay\, Hawaii
+
+<img src="./issues/Design_MetaT.png">
 
 
 # Metagenomic
