@@ -284,9 +284,9 @@ Assembly results are shown bellow.
 #### Zoom on Chlorobiaceae family
 
 The firsts observations of results, highlight the presence of the Chlorobiaceae family.
-The figure below allows the appreciation of the diversity in Chlorobiaceae annotations in the 3 databases.
-
-On right, the green bars represent the top hit obtained with each pipeline on the Chlorobiaceae family.
+The tree below allows the appreciation of the diversity in Chlorobiaceae annotations in the 3 databases.  
+On right, you can observe the taxonomic assignation results of each pipeline.  
+Notice that, the green bars represent the top hit obtained with each pipeline on the Chlorobiaceae family.
 
 <img src="./issues/chlorobi_family.svg">
 
