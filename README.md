@@ -279,6 +279,26 @@ Assembly results are shown bellow.
 <img src="./issues/coral_data_assembly.png">
 
 
+### Taxonomic assignation
+
+#### Zoom on Chlorobiaceae family
+
+The firsts observations of results, highlight the presence of the Chlorobiaceae family.
+The figure below allows the appreciation of the diversity in Chlorobiaceae annotations in the 3 databases.
+
+On right, the green bars represent the top hit obtained with each pipeline on the Chlorobiaceae family.
+
+<img src="./issues/chlorobi_family.svg">
+
+After a short investigation, sp003 annotated in GTDB (Atlas DB) is associated with Prosthecochloris marina, the top hit of squeezeMeta.  It gives us real confidence in this result. 
+https://gtdb.ecogenomic.org/genomes?gid=GCF_003182595.1
+https://www.ncbi.nlm.nih.gov/assembly/GCF_003182595.1/
+
+Furthermore, we find out that this bacteria have described in South China Sea, clothe to our sample extraction. An other good new !
+Bryantseva, I.A., Tarasov, A.L., Kostrikina, N.A. et al. Prosthecochloris marina sp. nov., a new green sulfur bacterium from the coastal zone of the South China Sea. Arch Microbiol 201, 1399–1404 (2019). https://doi.org/10.1007/s00203-019-01707-y
+
+Finally, s_chlorobium_phaeobacteroide find out by our 3 pipelines can also be considered as a good candidate. And could testify to a chlorobiaceae diversity in this coral reef environment.
+
 ### Coral reef metatranscriptomic
 
     Montipora capitata meta-transcriptome sequencing during thermal stress
