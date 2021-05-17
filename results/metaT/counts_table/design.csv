@@ -1,0 +1,7 @@
+sample	condition	path
+SRR74	HIGH	/home/arnaud/Haruko_takeyama_lab/metaT_quantif/SRR74/SRR74_reads_per_prot.tsv
+SRR75	HIGH	/home/arnaud/Haruko_takeyama_lab/metaT_quantif/SRR75/SRR75_reads_per_prot.tsv
+SRR76	HIGH	/home/arnaud/Haruko_takeyama_lab/metaT_quantif/SRR76/SRR76_reads_per_prot.tsv
+SRR77	AMBIANT	/home/arnaud/Haruko_takeyama_lab/metaT_quantif/SRR77/SRR77_reads_per_prot.tsv
+SRR78	AMBIANT	/home/arnaud/Haruko_takeyama_lab/metaT_quantif/SRR78/SRR78_reads_per_prot.tsv
+SRR79	AMBIANT	/home/arnaud/Haruko_takeyama_lab/metaT_quantif/SRR79/SRR79_reads_per_prot.tsv

@@ -1,0 +1,7 @@
+sample	condition	path
+SRR74	HIGH	/home/arnaud/Haruko_takeyama_lab/metaT_quantif_transcripts_per_prot/SRR74_transcr_prot.tsv
+SRR75	HIGH	/home/arnaud/Haruko_takeyama_lab/metaT_quantif_transcripts_per_prot/SRR75_transcr_prot.tsv
+SRR76	HIGH	/home/arnaud/Haruko_takeyama_lab/metaT_quantif_transcripts_per_prot/SRR76_transcr_prot.tsv
+SRR77	AMBIANT	/home/arnaud/Haruko_takeyama_lab/metaT_quantif_transcripts_per_prot/SRR77_transcr_prot.tsv
+SRR78	AMBIANT	/home/arnaud/Haruko_takeyama_lab/metaT_quantif_transcripts_per_prot/SRR78_transcr_prot.tsv
+SRR79	AMBIANT	/home/arnaud/Haruko_takeyama_lab/metaT_quantif_transcripts_per_prot/SRR79_transcr_prot.tsv
