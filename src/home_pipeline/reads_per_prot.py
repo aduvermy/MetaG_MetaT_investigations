@@ -19,6 +19,7 @@ args = parser.parse_args()
 
 print("PROCESS READING diamond res")
 protDict = dict()
+lenTranscrit = dict()
 #Build TSV bins with seqID == readID
 
 try:
@@ -42,29 +43,39 @@ print("END PROCESS\n")
 
 
 
+
+
+
 print("PROCESS READING reads per contig")
 readsDict = dict()
 #Build TSV bins with seqID == readID
-
+scaling_factor = 0
 try:
     reads_contig = open(args.reads_contigs, 'r')
 except:
     print(f"ERROR with {args.reads_contig}\n\n")
     exit()
-
+reads_contig.readline() #skip header
 for line in reads_contig:
     line = line.strip().split('\t')
     contigID = line[0]
-    readsNB = line[1]
+    readsNB = int(line[1])
     if contigID in readsDict:
         print('contigID repeat in file')
         exit()
     else:
-        readsDict[contigID] = readsNB   
+        lenTranscrit[contigID] = int(contigID.split('_')[3])
+        readsDict[contigID] = float(readsNB/lenTranscrit[contigID])
+        scaling_factor += float(readsNB/lenTranscrit[contigID])
 print("END PROCESS\n")
 
 
 
+scaling_factor = float(scaling_factor/1000000)
+print(scaling_factor)
+for key in readsDict:
+    readsDict[key] = float(readsDict[key]/scaling_factor)
+    
 print('WRITING OUTPUT')
 outputDict= {}
 for contigID in protDict:
