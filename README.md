@@ -33,7 +33,7 @@ File used ```SAMPLE/results/01.SAMPLE.fasta```
 
 **N50** is the length for which the collection of all contigs of that length or longer covers at least half an assembly.
 
-<img src="./issues/metaquast_res.png"> 
+<img src="./fig/metaquast_res.png"> 
 
 Logically, we observe an increase of the assembly length with the raise of the complexity.
 At the same time, the largest contig length have decreased with the complexity. As have the N50.
@@ -89,8 +89,8 @@ In ATLAS pipeline DAS Tool merge results from Metatabat and Maxbin.
 
 LOW                        |  HIGH
 :-------------------------:|:-------------------------:
-<img src="./issues/atlas_binning/compl_purity_low.png">  |  <img src="./issues/atlas_binning/compl_purity_high.png">
-<img src="./issues/atlas_binning/contamin_low.png"> |   <img src="./issues/atlas_binning/contamin_high.png">
+<img src="./fig/atlas_binning/compl_purity_low.png">  |  <img src="./fig/atlas_binning/compl_purity_high.png">
+<img src="./fig/atlas_binning/contamin_low.png"> |   <img src="./fig/atlas_binning/contamin_high.png">
 
 We observe that Maxbin is quite better than Metabat on low complexity samples. But Metabat  worked much better once applied to high complexity dataset.  
 By merging Metabat and Maxbin results, DAS Tool improves the completeness of the bins.   
@@ -109,7 +109,7 @@ Mate-pair reads are extremely valuable in a de novo setting as they provide long
 
 We can consider MP reads as the same as PE reads, but with a larger distance between them ("insert size"). But there is one technical difference due to the circularization procedure used in their preparation. PE reads are oriented "opp-in" (L=>.....<=R), whereas MP reads are oriented "opp-out" (L<=.....=>R).
 
-<img src="./issues/insert_sch.jpg"> 
+<img src="./fig/insert_sch.jpg"> 
 
 Note that in order to use SPAdes 3.1+ for mate-pair only assemblies you need to have the so-called "high quality mate pairs". Right now such mate pairs can only be generated using Nextera mate pair protocol. Everything else would give you suboptimal assemblies.
 [MP and SPADE](https://www.biostars.org/p/111202/)
@@ -133,7 +133,7 @@ ktImportText medium_taxo
 
 LOW                    |       MEDIUM        |  HIGH
 :---------------------:|:-------------:|:------------------:
-<img src="./issues/krona_low_profile.svg">  |  <img src="./issues/krona_medium_profile.svg">|<img src="./issues/krona_high_profile.svg"> 
+<img src="./fig/krona_low_profile.svg">  |  <img src="./fig/krona_medium_profile.svg">|<img src="./fig/krona_high_profile.svg"> 
 
 ### Atlas results from CAMI to Krona
 
@@ -150,7 +150,7 @@ ktImportText low_krona.taxonomy
 
 LOW                    |  HIGH
 :---------------------:|:------------------:
- <img src="./issues/atlas-low_krona.svg">  |  <img src="./issues/Atlas-high_krona.svg">| 
+ <img src="./fig/atlas-low_krona.svg">  |  <img src="./fig/Atlas-high_krona.svg">| 
 
 
 ### SqueezeMeta results from CAMI to Krona
@@ -172,16 +172,16 @@ exportKrona(CAMI_high)
 
 LOW                    |        medium      |  HIGH
 :---------------------:|:------------------:|:------------------:
- <img src="./issues/SqueezeM-low_krona.svg">| <img src="./issues/squeezeM-medium_krona.svg">  |  <img src="./issues/SqueezeM-high_krona.svg">| 
+ <img src="./fig/SqueezeM-low_krona.svg">| <img src="./fig/squeezeM-medium_krona.svg">  |  <img src="./fig/SqueezeM-high_krona.svg">| 
 
 
 ### CAMI reads unclassified/noHits comparison
 
-<img src="./issues/unclassified_reads.png">
+<img src="./fig/unclassified_reads.png">
 
 ### CAMI taxonomy comparison
 
-<img src="./issues/domain_proportion.png">
+<img src="./fig/domain_proportion.png">
 
 ### Build home metrics to compared Taxonomy 
 
@@ -198,7 +198,7 @@ LOW                    |        medium      |  HIGH
 ./ComparaisonAtlas.py -g -g gold.profile -p gtbdtk.summary.tsv -s raw_count.tsv -n nombre de reads_de_base
 ```  
 
-<img src="./issues/home_metric.jpeg">
+<img src="./fig/home_metric.jpeg">
 
 % found  = n taxa found by the pipeline / n taxa total of the gold standard  at taxonomic rank
 
@@ -254,7 +254,7 @@ Layout: PE
 
 ### Quality control
 
-<img src="./issues/QC_coralReads.png">
+<img src="./fig/QC_coralReads.png">
 
 
 ### Mapping vs cnidaria reference
@@ -276,7 +276,7 @@ SqueezeMeta also gives access to a coassembly mode: with this option reads from 
 
 Assembly results are shown bellow.
 
-<img src="./issues/coral_data_assembly.png">
+<img src="./fig/coral_data_assembly.png">
 
 
 ### Taxonomic assignation
@@ -288,7 +288,7 @@ The tree below allows the appreciation of the diversity in Chlorobiaceae annotat
 On right, you can observe the taxonomic assignation results of each pipeline.  
 Notice that, the green bars represent the top hit obtained with each pipeline on the Chlorobiaceae family.
 
-<img src="./issues/chlorobi_family.svg">
+<img src="./fig/chlorobi_family.svg">
 
 After a short investigation, sp003 annotated in GTDB (Atlas DB) is associated with Prosthecochloris marina, the top hit of squeezeMeta.  It gives us real confidence in this result.  
 
@@ -319,36 +319,99 @@ Selection: cDNA
 Layout: PAIRED  
 Location : A coral colony from the north end of Coconut Island\, Kneohe Bay\, Hawaii  
 
-<img src="./issues/Design_MetaT.png">
+<img src="./fig/Design_MetaT.png">
+
+
+
+### Workflow
+
+<img src="./fig/metaT_worklow.svg">
+
+### README
+
+#### 1. Atlas pipeline
+
+    atlas run qc
+    ## Assembly : preset_option = rna in config.yaml
+    atlas run assembly
+
+
+#### 2. 
+
+    humann --input hard_filter.fasta
+
+
+#### 3. Home pipeline
+
+a) Mapping
+
+    bowtie2-build --threads 8 SRR78/hard_filtered_transcripts.fasta \
+    SRR78/SRR78_transcripts.index &> SRR78/SRR78_index_bowtie2_report.txt
+
+    bowtie2 --very-sensitive -p 8 -x SRR74/SRR74_transcripts.index \
+    -1 SRR13523375_1.fastq -2 SRR13523375_2.fastq \
+    2> SRR75/SRR75_bowtie2_report_tmp.txt | \
+    samtools view -Sbh -@ 8 -F 4 - > SRR75/SRR75.bam
+
+    samtools view -h -o out.sam in.bam
+
+b) NCBI taxonomy
+
+
+    ./humann_diamond2TAXID.py -d hard_filtered_transcripts_diamond_aligned.tsv -o humann/output_metaT_taxo.tsv
+
+
+c) Quantify
+
+    ./reads_per_contigs.py -s SRR76.sam -o SRR76_reads_per_contigs.tsv
+
+    -> View on taxonomy content
+
+    ./taxonomy_view.py -d SRR79_metaT_taxo.tsv -c SRR79/SRR79_reads_per_contigs.tsv -o SRR79
+    
+
+<img src="./fig/metaT_class_focus.svg">
+ 
+    -> View on dynamic metabolic
+    
+    ./reads_per_prot.py -c SRR76_reads_per_contigs.tsv -d SRR76_transcripts/SRR76_metaT_taxo.tsv -o SRR76_reads_per_prot.tsv
+
+    ./transcript_per_prot.py -t SRR79_metaT_taxo.tsv -o SRR79_transcr_prot.tsv
+
+    -> differential analysis
+
+    execute : differential_analysis.R
+
+<img src="./fig/ACP_reads_per_prot_padj.png">
 
 
 # Metagenomic
 
 ## Atlas workflow
 
-<img src="./issues/ATLAS_scheme.png">
+<img src="./fig/ATLAS_scheme.png">
 
 ## Sunbeam workflow
 
-<img src="./issues/SUNBEAM_scheme.png">
+<img src="./fig/SUNBEAM_scheme.png">
 
 ## mOTU2 an alternative for taxonomic assignation
 
-<img src="./issues/mOTU.png">
+<img src="./fig/mOTU.png">
 
 ## Comparison between workflow
 
-<img src="./issues/table_comparison.png">
+<img src="./fig/table_comparison.png">
 
 # Metatranscriptomic
 
 ## Metatrans workflow
 
-<img src="./issues/metatrans.jpeg">
+<img src="./fig/metatrans.jpeg">
 
 ## Samsa2 workflow
 
-<img src="./issues/samsa2.jpg">
+<img src="./fig/samsa2.jpg">
 
 
 
